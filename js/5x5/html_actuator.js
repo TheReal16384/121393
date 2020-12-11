@@ -22,7 +22,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     });
 
     self.updateScore(metadata.score);
-    self.updateBestScore(metadata.bestScore);
+    /*self.updateBestScore(metadata.bestScore);*/
 
     if (metadata.terminated) {
       if (metadata.over) {
@@ -38,6 +38,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 // Continues the game (both restart and keep playing)
 HTMLActuator.prototype.continue = function () {
   this.clearMessage();
+  document.getElementById("audiotag").pause();
 };
 
 HTMLActuator.prototype.clearContainer = function (container) {
@@ -120,9 +121,9 @@ HTMLActuator.prototype.updateScore = function (score) {
   }
 };
 
-HTMLActuator.prototype.updateBestScore = function (bestScore) {
+/*HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
-};
+};*/
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
@@ -130,6 +131,8 @@ HTMLActuator.prototype.message = function (won) {
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
+  document.getElementById("audiotag").currentTime=0;
+  document.getElementById("audiotag").play();
 };
 
 HTMLActuator.prototype.clearMessage = function () {
