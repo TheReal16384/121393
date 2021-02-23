@@ -38,7 +38,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 // Continues the game (both restart and keep playing)
 HTMLActuator.prototype.continue = function () {
   this.clearMessage();
-  document.getElementById("audiotag").pause();
+  document.getElementById("audiotag").play();
 };
 
 HTMLActuator.prototype.clearContainer = function (container) {
