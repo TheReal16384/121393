@@ -107,15 +107,15 @@ HTMLActuator.prototype.positionClass = function (position) {
 HTMLActuator.prototype.updateScore = function (score) {
   this.clearContainer(this.scoreContainer);
 
-  var difference = score - this.score;
+  var difference = score - this.score.toLocalString();
   this.score = score;
 
-  this.scoreContainer.textContent = this.score.toLocaleString;
+  this.scoreContainer.textContent = this.score.toLocaleString();
 
   if (difference > 0) {
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
-    addition.textContent = difference;
+    addition.textContent = difference.toLocaleString();
 
     this.scoreContainer.appendChild(addition);
   }
